@@ -3,10 +3,10 @@
   "version": "0.15.0",
   "license": "MIT",
   "bin": {
-    "kysely-codegen": "dist/index.js"
+    "kysely-codegen": "./dist/index.js"
   },
   "scripts": {
-    "build": "esbuild src/index.ts --bundle --platform=node --target=node20 --outfile=dist/index.js"
+    "build": "esbuild src/index.ts --bundle --platform=node --target=node20 --minify --outfile=dist/index.js"
     
   },
   "dependencies": {
