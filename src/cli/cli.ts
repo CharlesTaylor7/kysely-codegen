@@ -155,11 +155,8 @@ export class Cli {
     const camelCase = this.#parseBoolean(argv['camel-case']);
     const dialectName = argv.dialect;
     const domains = this.#parseBoolean(argv.domains);
-    const envFile = argv['env-file'] as string | undefined;
-    const excludePattern = argv['exclude-pattern'] as string | undefined;
     const help =
       !!argv.h || !!argv.help || _.includes('-h') || _.includes('--help');
-    const includePattern = argv['include-pattern'] as string | undefined;
     const logLevel = this.#getLogLevel(argv['log-level']);
     const outFile =
       (argv['out-file'] as string | undefined) ??

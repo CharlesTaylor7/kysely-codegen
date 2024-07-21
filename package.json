@@ -2,20 +2,18 @@
   "name": "kysely-codegen",
   "version": "0.15.0",
   "license": "MIT",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "bin": {
-    "kysely-codegen": "./dist/index.js"
+    "kysely-codegen": "dist/index.js"
   },
   "scripts": {
-    "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js"
+    "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js --minify"
   },
   "dependencies": {
-    "minimist": "^1.2.8"
+    "minimist": "^1.2.8",
+    "kysely": "^0.27.0"
   },
   "peerDependencies": {
-    "better-sqlite3": "^11.0.0",
-    "kysely": "^0.27.0"
+    "better-sqlite3": "^11.0.0"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.9",
