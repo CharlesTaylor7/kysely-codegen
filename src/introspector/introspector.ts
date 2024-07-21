@@ -1,6 +1,5 @@
 import { Kysely, sql } from 'kysely';
 import type { DatabaseMetadata, Dialect } from '../core';
-import { TableMatcher } from './table-matcher';
 
 export type ConnectOptions = {
   connectionString: string;
@@ -9,8 +8,6 @@ export type ConnectOptions = {
 
 export type IntrospectOptions<DB> = {
   db: Kysely<DB>;
-  excludePattern?: string;
-  includePattern?: string;
 };
 
 /**
@@ -51,23 +48,7 @@ export abstract class Introspector<DB> {
   }
 
   protected async getTables(options: IntrospectOptions<DB>) {
-    let tables = await options.db.introspection.getTables();
-
-    if (options.includePattern) {
-      const tableMatcher = new TableMatcher(options.includePattern);
-      tables = tables.filter(({ name, schema }) =>
-        tableMatcher.match(schema, name),
-      );
-    }
-
-    if (options.excludePattern) {
-      const tableMatcher = new TableMatcher(options.excludePattern);
-      tables = tables.filter(
-        ({ name, schema }) => !tableMatcher.match(schema, name),
-      );
-    }
-
-    return tables;
+      return await options.db.introspection.getTables();
   }
 
   abstract introspect(

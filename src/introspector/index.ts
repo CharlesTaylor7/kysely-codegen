@@ -1,2 +1,2 @@
-export * from './introspector';
-export * from './table-matcher';
+export * from './introspector'
+

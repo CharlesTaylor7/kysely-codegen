@@ -1,4 +1,3 @@
-import chalk from 'chalk';
 import { inspect } from 'util';
 import { LogLevel } from './log-level';
 
@@ -55,23 +54,23 @@ export class Logger {
   }
 
   serializeDebug(...values: unknown[]) {
-    return chalk.gray(`  ${this.#inspect(values)}`);
+    return (`  ${this.#inspect(values)}`);
   }
 
   serializeError(...values: unknown[]) {
-    return chalk.red(`✗ ${this.#inspect(values)}`);
+    return (`✗ ${this.#inspect(values)}`);
   }
 
   serializeInfo(...values: unknown[]) {
-    return chalk.blue(`• ${this.#inspect(values)}`);
+    return (`• ${this.#inspect(values)}`);
   }
 
   serializeSuccess(...values: unknown[]) {
-    return chalk.green(`✓ ${this.#inspect(values)}`);
+    return (`✓ ${this.#inspect(values)}`);
   }
 
   serializeWarn(...values: unknown[]) {
-    return chalk.yellow(`⚠ ${this.#inspect(values)}`);
+    return (`⚠ ${this.#inspect(values)}`);
   }
 
   success(...values: unknown[]) {

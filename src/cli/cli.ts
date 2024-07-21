@@ -66,9 +66,7 @@ export class Cli {
       logger.info(`No dialect specified. Assuming '${inferredDialectName}'.`);
     }
 
-    const dialectManager = new DialectManager({
-      domains: !!options.domains,
-    });
+    const dialectManager = new DialectManager();
     const dialect = dialectManager.getDialect(
       options.dialectName ?? inferredDialectName,
     );

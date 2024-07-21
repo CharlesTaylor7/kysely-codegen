@@ -1,5 +1,3 @@
-import { config as loadEnv } from 'dotenv';
-import { expand as expandEnv } from 'dotenv-expand';
 import type { DialectName } from './dialect-manager';
 import type { Logger } from './logger';
 
@@ -27,25 +25,6 @@ export type ParsedConnectionString = {
  */
 export class ConnectionStringParser {
   #inferDialectName(connectionString: string): DialectName {
-    if (connectionString.startsWith('libsql')) {
-      return 'libsql';
-    }
-
-    if (connectionString.startsWith('mysql')) {
-      return 'mysql';
-    }
-
-    if (
-      connectionString.startsWith('postgres') ||
-      connectionString.startsWith('pg')
-    ) {
-      return 'postgres';
-    }
-
-    if (connectionString.toLowerCase().includes('user id=')) {
-      return 'mssql';
-    }
-
     return 'sqlite';
   }
 
@@ -77,10 +56,6 @@ export class ConnectionStringParser {
           `Parameter 0 of function '${name}' must be a string.`,
         );
       }
-
-      expandEnv(loadEnv({ path: options.envFile }));
-
-      options.logger?.info('Loaded environment variables from .env file.');
 
       const envConnectionString = process.env[key];
       if (!envConnectionString) {

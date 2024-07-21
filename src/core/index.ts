@@ -2,7 +2,6 @@ export * from './adapter';
 export * from './connection-string-parser';
 export * from './dialect';
 export * from './dialect-manager';
-export * from './diff-checker';
 export * from './enum-collection';
 export * from './log-level';
 export * from './logger';
