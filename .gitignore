@@ -1,6 +1,1 @@
-/.git
-**/.coverage
-**/node_modules
-**/*.DS_Store
-**/*.tsbuildinfo
-**/.env
+/node_modules/
